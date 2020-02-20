@@ -1,0 +1,13 @@
+language: node_js
+node_js: "12"
+branches:
+  only:
+    - master
+cache:
+  directories:
+    - node_modules
+deploy:
+  provider: heroku
+  api_key:
+    secure: "6ef589d0-6b46-4728-b9e3-ac309a081578"
+  app: travel-verse
