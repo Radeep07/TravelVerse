@@ -4,8 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Hello Bulma!</title>
+
+    {{!-- css --}}
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <link rel="stylesheet" href="css/map.css">
+
+    {{!-- Scripts --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCHA5CqSyAw9n9vOMXFw1VVLpLJCcvqbg&libraries=places&callback=initAutocomplete"
+         async defer></script>
+    <script src="js/map.js"></script>
+    <script src="js/font-awesome-markers.min.js"></script>
   </head>
   <body>
 		{{> header }}
