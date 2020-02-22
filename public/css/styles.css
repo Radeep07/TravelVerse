@@ -1,0 +1,4 @@
+.header .navbar-item img {
+    max-height: none;
+    height: 4em;
+}
