@@ -102,22 +102,26 @@ function createMarkers(attractions) {
 
       var infowindow = new google.maps.InfoWindow()
 
-      google.maps.event.addListener(marker, 'click', (function (marker, attr, attr_latlon, places, infowindow) {
+      google.maps.event.addListener(marker, 'click', (function (marker, attr, infowindow) {
         return function () {
-          var p1 = places[0].geometry.location;
-          
-          var atDistance =(google.maps.geometry.spherical.computeDistanceBetween(p1, attr_latlon) / 1000).toFixed(2);
           var rate = attr.rate ? attr.rate : 0;
           var starHtml = '';
           for(var i=0;i<rate;i++){
             starHtml +="<img src='../images/star.png'></img>";
           }
 
-          infowindow.setContent('<div><strong>' + attr.name + '</strong><br>Distance: '+atDistance+' KM<br>'+ starHtml);
+          var distance;
+
+          if(attr.dist < 1000) {
+            distance = parseFloat(attr.dist).toFixed(2) + 'm';
+          } else {
+            distance = (parseFloat(attr.dist) / 1000).toFixed(2) + 'km';
+          }
+          infowindow.setContent('<div><strong>' + attr.name + '</strong><br>Distance: '+distance+'<br>'+ starHtml);
           
           infowindow.open(map, marker);
         };
-      })(marker, attr, attr_latlon, places, infowindow));
+      })(marker, attr, infowindow));
 
 
       markers.push(marker);
