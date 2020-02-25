@@ -5,12 +5,12 @@
 // This example requires the Places library. Include the libraries=places
 // parameter when you first load the API. For example:
 // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
-
 var ATTR_API_KEY = "5ae2e3f221c38a28845f05b6539092183be7af15887fd47cb35ed3ff";
 var ATTR_API_URL = "https://api.opentripmap.com/0.1/en/places/radius";
 var map;
 var markers;
 var bounds;
+var places = [];
 
 function initAutocomplete() {
   map = new google.maps.Map(document.getElementById('map'), {
@@ -33,7 +33,7 @@ function initAutocomplete() {
   // Listen for the event fired when the user selects a prediction and retrieve
   // more details for that place.
   searchBox.addListener('places_changed', function () {
-    var places = searchBox.getPlaces();
+    places = searchBox.getPlaces();
 
     if (places.length == 0) {
       return;
@@ -53,6 +53,23 @@ function initAutocomplete() {
         return;
       }
 
+      var marker = new google.maps.Marker({
+        map: map,
+        title: place.name,
+        position: place.geometry.location
+      });
+
+      var infowindow = new google.maps.InfoWindow()
+
+      google.maps.event.addListener(marker, 'click', (function (marker, place, infowindow) {
+        return function () {
+          infowindow.setContent('<div><strong>' + place.name + '</strong>');
+          infowindow.open(map, marker);
+        };
+      })(marker, place, infowindow));
+
+      markers.push(marker);
+
       getAttraction(place);
     });
   });
@@ -63,7 +80,7 @@ function createMarkers(attractions) {
   for (var i = 0; i < attractions.length; i++) {
     var attr = attractions[i];
 
-    if(attr.name) {
+    if (attr.name) {
       var icon = {
         path: fontawesome.markers.MAP_PIN,
         scale: 0.3,
@@ -73,25 +90,36 @@ function createMarkers(attractions) {
         fillColor: '#f8ae5f',
         fillOpacity: 0.9,
       };
-  
+
+      var attr_latlon = new google.maps.LatLng(parseFloat(attr.point.lat), parseFloat(attr.point.lon));
       // Create a marker for each place.
       var marker = new google.maps.Marker({
         map: map,
         icon: icon,
         title: attr.name,
-        position: new google.maps.LatLng(parseFloat(attr.point.lat), parseFloat(attr.point.lon))
+        position: attr_latlon
       });
-  
+
       var infowindow = new google.maps.InfoWindow()
-  
-      google.maps.event.addListener(marker,'click', (function(marker,attr,infowindow){ 
-          return function() {
-             infowindow.setContent(attr.name);
-             infowindow.open(map,marker);
-          };
-      })(marker,attr,infowindow));
-    
-  
+
+      google.maps.event.addListener(marker, 'click', (function (marker, attr, attr_latlon, places, infowindow) {
+        return function () {
+          var p1 = places[0].geometry.location;
+          
+          var atDistance =(google.maps.geometry.spherical.computeDistanceBetween(p1, attr_latlon) / 1000).toFixed(2);
+          var rate = attr.rate ? attr.rate : 0;
+          var starHtml = '';
+          for(var i=0;i<rate;i++){
+            starHtml +="<img src='../images/star.png'></img>";
+          }
+
+          infowindow.setContent('<div><strong>' + attr.name + '</strong><br>Distance: '+atDistance+' KM<br>'+ starHtml);
+          
+          infowindow.open(map, marker);
+        };
+      })(marker, attr, attr_latlon, places, infowindow));
+
+
       markers.push(marker);
       // Only geocodes have viewport.
       bounds.extend(marker.getPosition());
@@ -112,6 +140,7 @@ function getAttraction(place) {
   const lon = place.geometry.location.lng();
   const radius = 5000;
   let url = ATTR_API_URL + '?radius=' + radius + '&lon=' + lon + '&lat=' + lat + '&format=json&apikey=' + ATTR_API_KEY;
+  console.log(url);
   $.ajax({
     url: url,
     method: "GET"
