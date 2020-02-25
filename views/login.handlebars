@@ -1,9 +1,10 @@
 <div class="containerform">
-
-    <div class="login-form">
-        <input type="text" placeholder="Enter Email Address" class="input"><br />
-        <input type="password" placeholder="Enter Password" class="input"><br />
-        <div class="btn">log in</div>
-        <span><a href="#">I forgot my Password.</a></span>
-    </div>
+    <form id="loginForm">
+        <div class="login-form">
+            <p><input type="email" name="useremail" id="useremail" placeholder="Enter Email Address" class="input" required></p>
+            <p><input type="password" name="userpass" id="userpass" placeholder="Enter Password" class="input" required></p>
+            <input type="submit" class="btn" value="log in">
+            <span><a href="#">I forgot my Password.</a></span>
+        </div>
+    </form>
 </div>
