@@ -149,8 +149,14 @@ function createAttractionCard(attractions) {
     var attr = attractions[i];
     if(attr.name) {
       var type= attr.kinds.split(',').join(', ');
+      var rate = attr.rate ? attr.rate : 0;
+      var starHtml = '';
+      for(var j=0;j<rate;j++){
+        starHtml +="<img src='../images/star.png'></img>";
+      }
       cards = cards.add(`<div class="column is-one-quarter"><div class="card"><div class="card-content">
         <p class="title is-4">${attr.name}</p>
+        ${starHtml}
         <div class="content">Type: ${type}</div>
       </div></div></div>`);
       console.log(attr.name);  

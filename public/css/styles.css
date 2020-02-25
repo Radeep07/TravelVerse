@@ -1,3 +1,9 @@
+.content{
+    columns: is-3;
+    height:fit-content;  
+    word-wrap: break-word;
+  }
+
 .header .navbar-item img {
     max-height: none;
     height: 4em;
@@ -7,14 +13,6 @@
     width: 450px;
     margin: 70px auto;
 }
-
-
-.container {
-    width: 450px;
-    margin: 70px auto;
-}
-
-
 
 .login {
     width: 50%;
@@ -88,4 +86,24 @@
     letter-spacing: 1px;
     cursor: pointer;
     margin-bottom: 30px;
+  }
+  @media screen and (max-width: 450px){ 
+    .content{
+      columns: is-12; 
+    }
+  }
+  @media screen and (min-width: 450px){ 
+    .content {
+      columns: is-6; 
+    }
+  }
+  @media screen and (min-width: 600px){ 
+    .content {
+      columns: is-4; 
+    }
+  }
+  @media screen and (min-width: 1080px){ 
+    #pac-input {
+      columns: is-3; 
+    }
   }
