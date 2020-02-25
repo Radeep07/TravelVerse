@@ -28,13 +28,13 @@ html, body {
 }
 
 .pac-card {
-  margin: 10px 10px 0 0;
+  margin: 100px 10px 0 0;
   border-radius: 2px 0 0 2px;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   outline: none;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  background-color: #fff;
+  background-color: rgb(142, 243, 196);
   font-family: Roboto;
 }
 

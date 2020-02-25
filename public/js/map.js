@@ -95,6 +95,25 @@ function createMarkers(attractions) {
   map.setZoom(map.getZoom()+1); 
 }
 
+function createAttractionCard(attractions) {
+  var attractionCards = $('#attraction-cards');
+
+  var cards = $();
+  for(var i=0; i<attractions.length; i++) {
+    var attr = attractions[i];
+    if(attr.name) {
+      var type= attr.kinds.split(',').join(', ');
+      cards = cards.add(`<div class="column is-one-quarter"><div class="card"><div class="card-content">
+        <p class="title is-4">${attr.name}</p>
+        <div class="content">Type: ${type}</div>
+      </div></div></div>`);
+      console.log(attr.name);  
+    }
+  }
+  attractionCards.html(cards);
+
+}
+
 function getAttraction(place) {
   const lat = place.geometry.location.lat();
   const lon = place.geometry.location.lng();
@@ -108,5 +127,6 @@ function getAttraction(place) {
     method: "GET"
   }).then(function(response) {
     createMarkers(response);
+    createAttractionCard(response);
   });
 }
