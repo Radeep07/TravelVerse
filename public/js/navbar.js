@@ -21,5 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
-  
+    $("#loginbutton").click(function(){
+        console.log("click")
+    });
+
   });
