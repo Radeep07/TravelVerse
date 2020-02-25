@@ -1,0 +1,91 @@
+.header .navbar-item img {
+    max-height: none;
+    height: 4em;
+}
+
+.containerform {
+    width: 450px;
+    margin: 70px auto;
+}
+
+
+.container {
+    width: 450px;
+    margin: 70px auto;
+}
+
+
+
+.login {
+    width: 50%;
+    background:#34b3a0;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: white;
+}
+
+.signup  {
+    width: 50%;
+    background:#34b3a0;
+    height: 60px;
+    float: left;
+    text-align: center;
+    line-height: 60px;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: white;
+}
+
+.login-form {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: 400px;;
+}
+
+
+.signup-form {
+    background: #fff;
+    box-sizing: border-box;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    height: 800px;;
+}
+
+.input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    margin-bottom: 25px;
+    border: 2px solid #e9eaea;
+    color: #3e3e40;
+    font-size: 16px;
+    outline: none;
+    transform: all 0.5s ease;
+
+}
+
+.input:focus{
+    border: 2px solid #34b3a0;
+  }
+  
+  .btn{
+    width: 100%;
+    background: #34b3a0;
+    height: 60px;
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 1px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
