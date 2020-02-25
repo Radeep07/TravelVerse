@@ -17,9 +17,14 @@ module.exports = function (app) {
     res.render("index");
   });
 
-  // index route loads login.html
+  // route loads login.html
   app.get("/login", function (req, res) {
     res.render("login");
+  });
+
+   // route loads signup.html
+   app.get("/signup", function (req, res) {
+    res.render("signup");
   });
 
 

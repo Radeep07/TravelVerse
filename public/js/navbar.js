@@ -25,4 +25,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("click")
     });
 
+    $("#signupbutton").click(function(){
+      console.log("click")
+  });
+
   });
