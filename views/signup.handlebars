@@ -1,12 +1,14 @@
 <div class="containerform">
-   <div class="signup-form">
-        <input type="text" placeholder="Enter First Name" class="input"> <br/>
-        <input type="text" placeholder="Enter Last Name" class="input"> <br/>
-        <input type="text" placeholder="Enter Email Address" class="input"> <br/>
-        <input type="text" placeholder="Enter City" class="input"> <br/>
-        <input type="text" placeholder="Enter Phone Number" class="input"> <br/>
-        <input type="text" placeholder="Enter Password" class="input"> <br/>
-        <input type="text" placeholder="Confirm Password" class="input"> <br/>
-        <div class="btn"> Register Account</div>
-      </div>
+  <form id="RegistrationForm">
+    <div class="signup-form">
+      <p><input type="text" name="firstname" id="firstname" placeholder="Enter First Name" class="input" required></p>
+      <p><input type="text" name="lastname" id="lastname" placeholder="Enter Last Name" class="input" required></p>
+      <p><input type="email" name="emailaddress" id="emailaddress" placeholder="Enter Email Address" class="input" required></p>
+      <p><input type="text" name="city" id="city" placeholder="Enter City" class="input" required></p>
+      <p><input type="number" name="mobilenumber" id="mobilenumber" placeholder="Enter Mobile Number" class="input" required></p>
+      <p><input type="text" name="password" id="password" placeholder="Enter Password" class="input" required></p>
+      <p><input type="text" name="repassword" id="repassword" placeholder="Re-enter Password" class="input" required> </p>
+      <input type="submit" class="btn" value="Register Account">
+    </div>
+  </form>
 </div>
