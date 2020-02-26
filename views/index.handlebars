@@ -1,26 +1,44 @@
 {{!-- full-width map container --}}
 
 <input id="pac-input" class="controls" type="text" placeholder="Search Box">
-<div id="map"></div>  
+<div id="map"></div>
 
 <section class="section">
-  <div class="container">  
+  <div class="container">
   </div>
 </section>
 
-{{!-- full-width news/weather container --}}
+{{!-- full-width news container --}}
 <section class="section">
-  <div class="container">    
+  <div class="container">
+   
+    <div id="loader" style="display:none;">
+      <div class="progress">
+        <div class="indeterminate"></div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div id="newsResults"></div>
+    </div>
+    
   </div>
 </section>
+
+{{!-- full-width weather container --}}
+<section class="section">
+  <div class="container">
+  </div>
+</section>
+
 
 {{!-- attractions div --}}
 {{!-- get location, search for location attractions, get images with link, populate, listen for location change event --}}
 {{!-- row 1 x 4 column --}}
 <section class="section">
   <div class="container">
-     <div class="columns is-multiline" id="attraction-cards">
-       {{!-- Dynamically adding card from map.js --}}
+    <div class="columns is-multiline" id="attraction-cards">
+      {{!-- Dynamically adding card from map.js --}}
     </div>
   </div>
 </section>
