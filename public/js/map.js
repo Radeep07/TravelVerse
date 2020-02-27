@@ -156,7 +156,6 @@ function createAttractionCard(attractions) {
         ${starHtml}
         <div class="content">Type: ${type}</div>
       </div></div></div>`);
-      console.log(attr.name);
     }
   }
   attractionCards.html(cards);
@@ -168,7 +167,7 @@ function getAttraction(place) {
   const lon = place.geometry.location.lng();
   const radius = 5000;
   let url = ATTR_API_URL + '?radius=' + radius + '&lon=' + lon + '&lat=' + lat + '&format=json&apikey=' + ATTR_API_KEY;
-  console.log(url);
+
   $.ajax({
     url: url,
     method: "GET"
