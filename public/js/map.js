@@ -11,7 +11,6 @@ var map;
 var markers;
 var bounds;
 var places = [];
-
 function initAutocomplete() {
   map = new google.maps.Map(document.getElementById('map'), {
     center: { lat: -33.8688, lng: 151.2195 },
@@ -23,9 +22,8 @@ function initAutocomplete() {
 
   // Create the search box and link it to the UI element.
   var input = document.getElementById('pac-input');
-  var searchBox = new google.maps.places.SearchBox(input);
+  var searchBox = new google.maps.places.SearchBox(input);  
   map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
-
   // Bias the SearchBox results towards current map's viewport.
   map.addListener('bounds_changed', function () {
     searchBox.setBounds(map.getBounds());
@@ -39,9 +37,8 @@ function initAutocomplete() {
 
     if (places.length == 0) {
       return;
-    }
-
-    // Clear out the old markers.
+    }   
+   // Clear out the old markers.
     markers.forEach(function (marker) {
       marker.setMap(null);
     });
@@ -59,7 +56,7 @@ function initAutocomplete() {
         map: map,
         title: place.name,
         position: place.geometry.location
-      });
+      });      
 
       var infowindow = new google.maps.InfoWindow()
 
@@ -108,19 +105,19 @@ function createMarkers(attractions) {
         return function () {
           var rate = attr.rate ? attr.rate : 0;
           var starHtml = '';
-          for(var i=0;i<rate;i++){
-            starHtml +="<img src='../images/star.png'></img>";
+          for (var i = 0; i < rate; i++) {
+            starHtml += "<img src='../images/star.png'></img>";
           }
 
           var distance;
 
-          if(attr.dist < 1000) {
+          if (attr.dist < 1000) {
             distance = parseFloat(attr.dist).toFixed(2) + 'm';
           } else {
             distance = (parseFloat(attr.dist) / 1000).toFixed(2) + 'km';
           }
-          infowindow.setContent('<div><strong>' + attr.name + '</strong><br>Distance: '+distance+'<br>'+ starHtml);
-          
+          infowindow.setContent('<div><strong>' + attr.name + '</strong><br>Distance: ' + distance + '<br>' + starHtml);
+
           infowindow.open(map, marker);
         };
       })(marker, attr, infowindow));
@@ -145,21 +142,21 @@ function createAttractionCard(attractions) {
   var attractionCards = $('#attraction-cards');
 
   var cards = $();
-  for(var i=0; i<attractions.length; i++) {
+  for (var i = 0; i < attractions.length; i++) {
     var attr = attractions[i];
-    if(attr.name) {
-      var type= attr.kinds.split(',').join(', ');
+    if (attr.name) {
+      var type = attr.kinds.split(',').join(', ');
       var rate = attr.rate ? attr.rate : 0;
       var starHtml = '';
-      for(var j=0;j<rate;j++){
-        starHtml +="<img src='../images/star.png'></img>";
+      for (var j = 0; j < rate; j++) {
+        starHtml += "<img src='../images/star.png'></img>";
       }
       cards = cards.add(`<div class="column is-one-quarter"><div class="card"><div class="card-content">
         <p class="title is-4">${attr.name}</p>
         ${starHtml}
         <div class="content">Type: ${type}</div>
       </div></div></div>`);
-      console.log(attr.name);  
+      console.log(attr.name);
     }
   }
   attractionCards.html(cards);
