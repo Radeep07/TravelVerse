@@ -24,7 +24,9 @@ $(document).ready(function () {
           for (var i = 0; i < 3; i++) {
             output += `
                 <div class="col l6 m6 s12">
-                <h4><strong>${latestNews[i].title}</strong></h4>                
+
+                <h2> <strong>${latestNews[i].title}</strong> </h2> 
+
                 <p>${latestNews[i].description}</p>
                 <p>${latestNews[i].content}</p>                
                 <a href="${latestNews[i].url}" class="btn">Read more</a>
