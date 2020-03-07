@@ -30,3 +30,5 @@ As a users, we do understand the importance of time that we put in when we plan 
 * As a user, I want to check weather conditions and act accordingly.
 * As a user, I would like to know the flash news of the location I am planning for.
 * As a user, I wish to store my favourite places for future use.
+
+### Deployed application URL - https://travel-verse.herokuapp.com/
