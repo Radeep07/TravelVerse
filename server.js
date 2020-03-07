@@ -1,3 +1,4 @@
+var compression = require("compression");
 var express = require("express");
 var session = require("express-session");
 // Requiring passport as we've configured it
@@ -6,6 +7,20 @@ var passport = require("./config/passport");
 var PORT = process.env.PORT || 3000;
 
 var app = express();
+
+//compresses the application using compress
+app.use(compression({ filter: shouldCompress }));
+
+//function to compress, the shouldCompress
+function shouldCompress (req, res) {
+  if (req.headers['x-no-compression']) {
+    // don't compress responses with this request header
+    return false
+  }
+ 
+  // fallback to standard filter function
+  return compression.filter(req, res)
+}
 
 // Requiring our models for syncing
 var db = require("./models");
